@@ -48,14 +48,11 @@ public class No3_LongestSubstringWithoutRepeatingCharacters {
             if (map.containsKey(alpha)){
                 start = Math.max(map.get(alpha), start);
             }
-            System.out.println("start=" + start);//
-            ans = Math.max(ans, end - start + 1);
-            System.out.println("ans=" + ans);//
-            map.put(s.charAt(end), end + 1);
-            System.out.println(map);//
 
-            System.out.println("**********");
-            System.out.println();
+            ans = Math.max(ans, end - start + 1);
+
+            map.put(s.charAt(end), end + 1);
+
         }
         return ans;
     }

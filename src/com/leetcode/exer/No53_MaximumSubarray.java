@@ -31,7 +31,7 @@ package com.leetcode.exer;
  * 链接：https://leetcode-cn.com/problems/maximum-subarray
  */
 
-public class    No53_MaximumSubarray {
+public class No53_MaximumSubarray {
 
     //动态化归法：
     public int maxSubArray(int[] nums) {

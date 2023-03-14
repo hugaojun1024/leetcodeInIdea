@@ -1,4 +1,4 @@
-package com.leetcode.exer2.pc;
+package com.leetcode.exer2;
 
 import org.junit.Test;
 
