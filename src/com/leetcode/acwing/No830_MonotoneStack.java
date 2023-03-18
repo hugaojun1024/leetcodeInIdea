@@ -42,6 +42,7 @@ public class No830_MonotoneStack {
 
     @Test
     public static void test() throws IOException {
+
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int n = Integer.parseInt(br.readLine());
         int[] nums = new int[n];
