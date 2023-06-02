@@ -68,7 +68,7 @@ public class No15_ThreeNum {
         }
         return list;
     }
-1
+
     @Test
     public void testNo15_ThreeNum() {
         int[] nums = new int[] {-1,0,1,2,-1,-4};
