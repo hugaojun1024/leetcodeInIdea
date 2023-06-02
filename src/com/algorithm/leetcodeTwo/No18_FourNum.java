@@ -1,5 +1,9 @@
 package com.algorithm.leetcodeTwo;
 
+import org.junit.Test;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -11,8 +15,6 @@ import java.util.List;
  * a, b, c, and d are distinct.
  * nums[a] + nums[b] + nums[c] + nums[d] == target
  * You may return the answer in any order.
- *
- *
  *
  * Example 1:
  *
@@ -35,7 +37,36 @@ import java.util.List;
  */
 public class No18_FourNum {
     public List<List<Integer>> fourSum(int[] nums, int target) {
-        
-        return null;
+        List<List<Integer>> list = new ArrayList<>();
+        int len = nums.length;
+        Arrays.sort(nums);
+        if (len < 4 || nums[0] >= 0 && nums[0] > target || nums[len - 1] < 0 && nums[len - 1] < target) return list;
+        for (int i = 0; i < len; i++) {
+            if (i > 0 && nums[i - 1] == nums[i]) continue;//去重
+            for (int j = i + 1; j < len - 2; j++) {
+                if (j > i + 1 && nums[j - 1] == nums[j]) continue;//去重
+                int L = j + 1 , R = len - 1;
+                while (L < R && L < len - 1 && R > 0) {
+                    int sum = nums[i] + nums[j] + nums[L] + nums[R];
+                    if (sum == target) {
+                        list.add(Arrays.asList(nums[i],nums[j], nums[L], nums[R]));
+                        while (R > L && nums[L] == nums[L + 1]) L++;
+                        while (R > L && nums[R] == nums[R - 1]) R--;
+                        L++;R--;
+                    } else if (sum < target) {
+                        L++;
+                    } else {
+                        R--;
+                    }
+                }
+            }
+        }
+        return list;
+    }
+
+    @Test
+    public void testNo18_FourNum() {
+        int[] nums = new int[] {1,0,-1,0,-2,2};
+        System.out.println(fourSum(nums, 0));
     }
 }
