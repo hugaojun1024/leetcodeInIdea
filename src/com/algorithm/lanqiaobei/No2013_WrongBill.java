@@ -1,7 +1,5 @@
 package com.algorithm.lanqiaobei;
 
-import org.junit.Test;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
@@ -45,5 +43,4 @@ public class No2013_WrongBill {
             }
         }
     }
-
 }
