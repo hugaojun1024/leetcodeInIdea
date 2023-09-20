@@ -36,13 +36,19 @@ import java.util.List;
  * @create 2023-06-02-[上午 10:02]-周五
  */
 public class No18_FourNum {
+    /**
+     * 排序 + 双指针
+     * @param nums
+     * @param target
+     * @return
+     */
     public List<List<Integer>> fourSum(int[] nums, int target) {
         List<List<Integer>> list = new ArrayList<>();
         int len = nums.length;
         Arrays.sort(nums);
         if (len < 4 || nums[0] >= 0 && nums[0] > target || nums[len - 1] < 0 && nums[len - 1] < target) return list;
-        for (int i = 0; i < len; i++) {
-            if (i > 0 && nums[i - 1] == nums[i]) continue;//去重
+        for (int i = 0; i < len -1; i++) {
+            if (i > 0 && nums[i + 1] == nums[i]) continue;//去重
             for (int j = i + 1; j < len - 2; j++) {
                 if (j > i + 1 && nums[j - 1] == nums[j]) continue;//去重
                 int L = j + 1 , R = len - 1;
@@ -50,6 +56,7 @@ public class No18_FourNum {
                     int sum = nums[i] + nums[j] + nums[L] + nums[R];
                     if (sum == target) {
                         list.add(Arrays.asList(nums[i],nums[j], nums[L], nums[R]));
+                        //去重
                         while (R > L && nums[L] == nums[L + 1]) L++;
                         while (R > L && nums[R] == nums[R - 1]) R--;
                         L++;R--;
@@ -66,7 +73,9 @@ public class No18_FourNum {
 
     @Test
     public void testNo18_FourNum() {
-        int[] nums = new int[] {1,0,-1,0,-2,2};
-        System.out.println(fourSum(nums, 0));
+        int[] nums = new int[] {
+                1000000000,1000000000,1000000000,1000000000
+        };
+        System.out.println(fourSum(nums, -294967296));
     }
 }

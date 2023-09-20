@@ -1,5 +1,6 @@
 package com.algorithm.leetcodeOne;
 
+import java.lang.reflect.Array;
 import java.util.Arrays;
 
 /**
@@ -71,16 +72,43 @@ public class No27_RemoveElement {
         return ans;
     }
 
+    /**
+     * 双指针法
+     * @param nums
+     * @param val
+     * @return
+     */
+    public int removeElement3(int[] nums, int val) {
+        int n = nums.length;
+        int left = 0;
+
+        System.out.println(n);
+
+        for (int right = 0; right < n; right++) {
+            // 如果right不等于val
+            if (nums[right] != val) {
+                nums[left] = nums[right];
+                left ++;
+                System.out.println(Arrays.toString(nums));
+            }
+        }
+        return left;
+    }
+
     //测试类：
     public static void main(String[] args) {
 
         No27_RemoveElement re = new No27_RemoveElement();
-        int[] nums = new int[] {0,1,2,2,3,0,4,2};
-        System.out.println(re.removeElement(nums, 2));
-        System.out.println(Arrays.toString(nums));
+//        int[] nums = new int[] {0,1,2,2,3,0,4,2};
+//        System.out.println(re.removeElement(nums, 2));
+//        System.out.println(Arrays.toString(nums));
+//
+//        int[] nums2 = new int[] {0,1,2,2,3,0,4,2};
+//        System.out.println(re.removeElement2(nums2, 2));
+//        System.out.println(Arrays.toString(nums2));
 
-        int[] nums2 = new int[] {0,1,2,2,3,0,4,2};
-        System.out.println(re.removeElement2(nums2, 2));
-        System.out.println(Arrays.toString(nums2));
+        int[] nums3 = new int[] {0,1,2,2,3,0,4,2};
+        System.out.println(re.removeElement3(nums3, 2));
+        System.out.println(Arrays.toString(nums3));
     }
 }
