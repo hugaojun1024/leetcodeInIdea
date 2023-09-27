@@ -29,13 +29,14 @@ public class No785_quickSort {
         if (l >= r ) return;
         int i = l - 1, j = r + 1, x = arr[l + r >> 1];
         while (i < j) {
-            do {
+            do
                 i++;
-            } while (arr[i] < x);
-            do {
+             while (arr[i] < x);
+            do
                 j--;
-            } while (arr[j] > x);
+             while (arr[j] > x);
 
+            //swap function
             if (i < j) {
                 int temp = arr[i];
                 arr[i] = arr[j];

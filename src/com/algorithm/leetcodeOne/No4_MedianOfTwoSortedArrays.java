@@ -1,5 +1,7 @@
 package com.algorithm.leetcodeOne;
 
+import org.junit.Test;
+
 /**
  * 给定两个大小分别为 m 和 n 的正序（从小到大）数组nums1 和nums2。请你找出并返回这两个正序数组的 中位数 。
  *
@@ -24,6 +26,70 @@ package com.algorithm.leetcodeOne;
  * @create 2022-06-16-[10:26]-周四
  */
 public class No4_MedianOfTwoSortedArrays {
+
+    /**
+     * Merge two arrays first, and the merging of two ordered arrays is part of merge sort.
+     * And then return the median depending on whether it's odd or even.
+     * @param nums1
+     * @param nums2
+     * @return
+     */
+    public double findMedianSortedArraysByMerger(int[] nums1, int[] nums2) {
+        int m = nums1.length,n = nums2.length;
+        int[] nums = new int[m + n];
+        // When nums1[].length is Zero
+        if (m == 0) {
+            if (n % 2 == 0) {
+                return (nums2[n / 2 - 1]  + nums2[n / 2]) / 2.0;//[1,2,3,4]
+            } else {
+                return nums2[n / 2];//[1,2,3]
+            }
+        }
+        // When nums2[].length is Zero
+        if (n == 0) {
+            if (m % 2 == 0) {
+                return (nums1[m / 2 - 1] + nums1[m / 2]) / 2.0;
+            } else {
+                return nums1[m / 2];
+            }
+        }
+
+        int count = 0, i = 0, j = 0;
+        // Merger nums1,nums2
+        while (count != (m + n)) {
+
+            // When nums1[] ends
+            if (i == m) {
+                while (j != n) nums[count++] = nums2[j++];break;
+            }
+
+            // When nums2[] ends
+            if (j == n) {
+                while (i != m) nums[count++] = nums1[i++];break;
+            }
+
+            // Neither is ends
+            if (nums1[i] < nums2[j]) {
+                nums[count++] = nums1[i++];
+            } else {
+                nums[count++] = nums2[j++];
+            }
+        }
+
+        //Even or Odd Solution
+        if (count % 2 == 0) {
+            return (nums[count / 2 - 1] + nums[count / 2]) / 2.0;
+        } else {
+            return nums[count / 2];
+        }
+    }
+
+    /**
+     *
+     * @param nums1
+     * @param nums2
+     * @return
+     */
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
         int sum = nums1.length + nums2.length;
         if (sum % 2 == 0) {
@@ -44,7 +110,8 @@ public class No4_MedianOfTwoSortedArrays {
         return findKth(nums1, left1, nums2, left2 + k / 2, k - k / 2);
     }
 
-    public static void main(String[] args) {
-
+    @Test
+    public void test() {
+        System.out.println(findMedianSortedArraysByMerger(new int[]{1, 3}, new int[]{1}));
     }
 }

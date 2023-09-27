@@ -41,6 +41,10 @@ public class No77_Combinations {
     public List<List<Integer>> combine(int n, int k) {
 
         List<List<Integer>> res = new ArrayList<>();
+        /*
+        说一下 ArrayDeque 和 LinkedList 的区别?
+        https://www.cnblogs.com/pengxurui/p/16922402.html
+         */
         if (k <= 0 || n < k ) {
             return res;
         }
@@ -61,7 +65,9 @@ public class No77_Combinations {
             // 下一轮搜索，设置的搜索起点要加 1，因为组合数理不允许出现重复的元素
             backtracking(n, k, i + 1, path, res);
             // 重点理解这里：深度优先遍历有回头的过程，因此递归之前做了什么，递归之后需要做相同操作的逆向操作
+            System.out.println("第" + i + "次之前" + path.toString());
             path.removeLast();
+            System.out.println("第" + i + "次之后" + path.toString());
         }
     }
 

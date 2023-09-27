@@ -1,5 +1,8 @@
 package com.algorithm.acwingOne;
 
+import org.junit.Test;
+
+import java.util.Arrays;
 import java.util.Scanner;
 /**
  * @author hugaojun Email:nat17185546@163.com
@@ -32,7 +35,8 @@ public class No787_MergeSort {
         merge_sort(arr, l, mid);
         merge_sort(arr, mid + 1, r);
 
-        int[] tmp = new int[r - l + 1];// 临时数组, 用于临时存储 [l,r]区间内排好序的数据
+        // 临时数组, 用于临时存储 [l,r]区间内排好序的数据
+        int[] tmp = new int[r - l + 1];
         int i = l, j = mid + 1, k = 0;
 
         while (i <= mid && j <= r ) {
@@ -47,4 +51,5 @@ public class No787_MergeSort {
             arr[i] = tmp[j];
         }
     }
+
 }
