@@ -27,12 +27,20 @@ package com.algorithm.leetcodeOne;
 public class No28_FindTheSubScriptOfTheFirstMatchInTheString {
 
     /**
+<<<<<<< HEAD
      * 朴素算法 ①
+=======
+     * 朴素算法
+>>>>>>> origin-github-ssh/master
      * @param haystack
      * @param needle
      * @return
      */
+<<<<<<< HEAD
     public int strStr1(String haystack, String needle) {
+=======
+    public int strStr(String haystack, String needle) {
+>>>>>>> origin-github-ssh/master
         int n = haystack.length();
         int m = needle.length();
 //        System.out.println(m);
@@ -53,6 +61,7 @@ public class No28_FindTheSubScriptOfTheFirstMatchInTheString {
         return -1;
     }
 
+<<<<<<< HEAD
     /**
      * 朴素算法 ②
      * @param haystack
@@ -84,6 +93,12 @@ public class No28_FindTheSubScriptOfTheFirstMatchInTheString {
         No28_FindTheSubScriptOfTheFirstMatchInTheString firstMatchInTheString = new No28_FindTheSubScriptOfTheFirstMatchInTheString();
         int result = firstMatchInTheString.strStr1("sadbutsad","sad");
         boolean result2 = firstMatchInTheString.strStr2("leetcode", "leeto");
+=======
+    public static void main(String[] args) {
+        No28_FindTheSubScriptOfTheFirstMatchInTheString firstMatchInTheString = new No28_FindTheSubScriptOfTheFirstMatchInTheString();
+        int result = firstMatchInTheString.strStr("sadbutsad","sad");
+        int result2 = firstMatchInTheString.strStr("leetcode", "leeto");
+>>>>>>> origin-github-ssh/master
         System.out.println(result);
         System.out.println(result2);
     }

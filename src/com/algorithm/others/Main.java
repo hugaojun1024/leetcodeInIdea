@@ -9,25 +9,30 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
-        Scanner scanner = new Scanner(System.in);
+        Scanner in = new Scanner(System.in);
+        int N = in.nextInt();
+        int V = in.nextInt();
 
-        System.out.print("请输入是否高（true或false）：");
-        boolean isTall = scanner.nextBoolean();
+        int[] v = new int[N + 1];   // 第i个物品的体积
+        int[] w = new int[N + 1];   // 第i个物品的价值
 
-        System.out.print("请输入是否富（true或false）：");
-        boolean isRich = scanner.nextBoolean();
-
-        System.out.print("请输入是否帅（true或false）：");
-        boolean isHandsome = scanner.nextBoolean();
-
-        scanner.close();
-
-        if (isTall && isRich && isHandsome) {
-            System.out.println("我一定要嫁给他!!!");
-        } else if (isTall || isRich || isHandsome) {
-            System.out.println("嫁吧，比上不足，比下有余。");
-        } else {
-            System.out.println("不嫁！");
+        for(int i = 1; i <= N; i++ ) {
+            v[i] = in.nextInt();
+            w[i] = in.nextInt();
         }
+
+        in.close();
+
+        int[][] f = new int[N + 1][V + 1];
+        f[0][0] = 0;
+
+        for(int i = 1; i <= N; i++ ) {
+            for(int j = 0; j <= V; j++ ) {
+                f[i][j] = f[i - 1][j];
+                if (j >= v[i]) f[i][j] = Math.max(f[i - 1][j], f[i - 1][j - v[i]] + w[i]);
+            }
+        }
+
+        System.out.println(f[N][V]);
     }
 }
