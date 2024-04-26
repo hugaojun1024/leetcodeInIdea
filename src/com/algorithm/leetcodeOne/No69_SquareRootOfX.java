@@ -1,7 +1,5 @@
 package com.algorithm.leetcodeOne;
 
-import java.util.concurrent.locks.ReentrantReadWriteLock;
-
 /**
  * 给你一个非负整数 x ，计算并返回 x 的 算术平方根 。
  * 由于返回类型是整数，结果只保留 整数部分 ，小数部分将被 舍去 。
@@ -31,7 +29,7 @@ public class No69_SquareRootOfX {
      * @param x
      * @return
      */
-    public int mySqrtWithDichotomy(int x) {
+    public static int mySqrtWithDichotomy(int x) {
 
         int l = 0;  // 左指针
         int r = x;  // 右指针即上界
@@ -91,7 +89,8 @@ public class No69_SquareRootOfX {
         No69_SquareRootOfX squareRootOfX = new No69_SquareRootOfX();
 //        int result = squareRootOfX.mySqrtWithDichotomy(8);
 //        int result2 = squareRootOfX.mySqrtWithNewtonM(8);
-        int ans1 = squareRootOfX.mySqrtWithTestError(4);
-        System.out.println(ans1);
+//        int ans1 = squareRootOfX.mySqrtWithTestError(4);
+//        System.out.println(ans1);
+        System.out.println(mySqrtWithDichotomy(2147395599));
     }
 }

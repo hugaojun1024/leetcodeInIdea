@@ -2,7 +2,6 @@ package com.algorithm.leetcodeOne;
 
 import com.algorithm.acwingOne.No826_SingleLinkedList;
 import com.algorithm.publicClass.ListNode;
-import javafx.beans.property.IntegerProperty;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -35,7 +34,6 @@ public class No2_AddTwoNumbers {
             if (l2 != null) {
                 l2 = l2.next;
             }
-
             if (addOne == 1) {
                 current.next = new ListNode(addOne);
             }

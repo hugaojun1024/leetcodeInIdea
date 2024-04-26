@@ -1,12 +1,10 @@
 package com.algorithm.leetcodeOne;
 
-import org.junit.Test;
-
 import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 给定一个字符串 s ，请你找出其中不含有重复字符的 最长子串 的长度。
+ * 给定一个字符串 s ，请你找出其中不含有重复字符的最长子串的长度。
  *
  * 示例1:
  *
@@ -34,32 +32,26 @@ import java.util.Map;
  *
  * @author hugaojun Email:nat17185546@163.com
  * @create 2022-05-25-[19:23]-周三
+ * @update 2024-04-03-[09:23]-周三
  */
 public class No3_LongestSubstringWithoutRepeatingCharacters {
 
-    public int lengthOfLongestSubstring(String s) {
-
-        int n = s.length();
-        int ans = 0;
+    public static int lengthOfLongestSubstring(String s) {
+        int n = s.length(), r = 0;
         Map<Character, Integer> map = new HashMap<>();
 
-        for (int start = 0, end = 0; end < n; end++) {
-            char alpha = s.charAt(end);
-            if (map.containsKey(alpha)){
-                start = Math.max(map.get(alpha), start);
-            }
-
-            ans = Math.max(ans, end - start + 1);
-
-            map.put(s.charAt(end), end + 1);
-
+        for(int i = 0, j = 0; i < n; i ++) {
+            char c = s.charAt(i);
+            if (map.containsKey(c)) j = Math.max(map.get(c), j);
+            map.put(s.charAt(i), i + 1); // i ++ && i + 1
+            r = Math.max(r, i - j + 1);
         }
-        return ans;
+
+        return r;
     }
 
-    @Test
-    public void test1(){
-        No3_LongestSubstringWithoutRepeatingCharacters test = new No3_LongestSubstringWithoutRepeatingCharacters();
-        System.out.println(test.lengthOfLongestSubstring("pwwkew"));
+    public static void main(String[] args) {
+        int x = lengthOfLongestSubstring("abcabcbb");
+        System.out.println(x);
     }
 }

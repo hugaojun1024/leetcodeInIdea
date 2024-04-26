@@ -1,7 +1,30 @@
 package com.algorithm.acwingOne;
 
 import java.util.Scanner;
-
+/** 快速排序
+ * 给定你一个长度为 n的整数数列。
+ *
+ * 请你使用快速排序对这个数列按照从小到大进行排序。并将排好序的数列按顺序输出。
+ *
+ * 输入格式
+ * 输入共两行，第一行包含整数 n
+ *
+ * 第二行包含 n 个整数（所有整数均在 1∼109 范围内），表示整个数列。
+ *
+ * 输出格式
+ * 输出共一行，包含 n 个整数，表示排好序的数列。
+ *
+ * 数据范围
+ * 1≤n≤100000
+ * 输入样例：
+ * 5
+ * 3 1 2 4 5
+ * 输出样例：
+ * 1 2 3 4 5
+ *
+ * @author hugaojun Email:nat17185546@163.com
+ * @create 2024-04-01-[上午 9:32]-周一
+ */
 public class No785_quickSort2 {
     private static final int N = 100010;
     private static int[] arr = new int[N];
@@ -28,6 +51,7 @@ public class No785_quickSort2 {
     // quick_sort function
     private static void quick_sort(int l, int r) {
         if (l >= r) return;
+        //int x = arr[(l + r + 1) >> 1], i = l - 1, j = r + 1; //MEmory limit error
         int i = l - 1, j = r + 1, x = arr[l + r >> 1];
         while (i < j) {
             do {i++;} while(arr[i] < x);
@@ -39,7 +63,10 @@ public class No785_quickSort2 {
 
             // Conditions need to be added: if (i < j)
             // swap(i , j);
-            if (i < j ) swap(i , j);
+            if (i < j) swap(i , j);
+
+            //在Java中，数组是按值传递的，因此不能直接交换数组元素值。
+            //但是可以通过传递数组和元素索引来模拟交换元素的值。
         }
 
         // recursion

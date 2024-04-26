@@ -41,34 +41,31 @@ import java.util.Scanner;
  * https://www.acwing.com/problem/content/798/
  * @author hugaojun Email:nat17185546@163.com
  * @create 2023-03-06-[下午 4:14]-周一
+ * @update 2024-03-31-[下午 8:00]-周日
  */
-public class No796_TheSumOfTheSubmatrices {
-    private static int N = 1010;
+public class No796_TheSumOfTheSubMatrices {
+    private static final int N = 1010;
+    private static int[][] arr = new int[N][N];
+    private static int[][] srr = new int[N][N];
+
     public static void main(String[] args) {
-        Scanner scan = new Scanner(System.in);
-        int n = scan.nextInt();
-        int m = scan.nextInt();
-        int q = scan.nextInt();
-        //final int N = 100010;//会爆内存Java
-        int[][] arr = new int[N][N];
-        int[][] s = new int[N][N];
-
-        for(int i = 0; i <= n; i++)
-            for(int j = 0; j <= m; j++)
-                arr[i][j] = scan.nextInt();
-
-        for(int i = 1; i <= n; i++)
-            for(int j = 1; j <= m; j++)
-                s[i][j] = s[i - 1][j] + s[i][j - 1] + s[i - 1][j - 1] + arr[i][j];
-
-        while (q-- != 0){
-            int x1, y1, x2, y2;
-            x1 = scan.nextInt();
-            y1 = scan.nextInt();
-            x2 = scan.nextInt();
-            y2 = scan.nextInt();
-
-            System.out.println(s[x2][y2] - s[x1 - 1][y2] - s[x2][y1 - 1] + s[x1 - 1][y1 - 1]);
+        Scanner in = new Scanner(System.in);
+        int n = in.nextInt();
+        int m = in.nextInt();
+        int q = in.nextInt();
+        for(int i = 1; i <= n; i ++ ) //arr
+            for(int j = 1; j <= m; j ++ )
+                arr[i][j] = in.nextInt();
+        for(int i = 1; i <= n; i ++ ) //srr前缀和
+            for(int j = 1; j <= m; j ++ )
+                srr[i][j] = srr[i - 1][j] + srr[i][j - 1] - srr[i - 1][j - 1] + arr[i][j];
+        while (q -- != 0 ) {
+            int x1 = in.nextInt();
+            int y1 = in.nextInt();
+            int x2 = in.nextInt();
+            int y2 = in.nextInt();
+            // ？最后一组测试用例没有打印
+            System.out.println(srr[x2][y2] - srr[x1 -1][y2] - srr[x2][y1 - 1] + srr[x1 - 1][y1 - 1]);
         }
     }
 }
